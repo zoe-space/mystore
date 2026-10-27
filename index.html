@@ -3,496 +3,290 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZeoSpace — Digital Products & Productivity Templates</title>
-  <meta name="description" content="ZeoSpace — 售卖数字产品 / 生产力模板与资产。提供专业的 productivity templates 与 digital assets。客服：support@zeospace.com" />
+  <title>ZeoSpace — 数字产品与生产力模板商店</title>
+  <meta name="description" content="销售高质量数字产品、生产力模板与设计资产。Notion 模板、Excel 报表、学习计划、品牌设计资源包。" />
   <style>
-    /* ============ 基础重置 ============ */
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* ============ 变量与重置 ============ */
     :root {
-      --color-bg: #f8fafc;
-      --color-surface: #ffffff;
-      --color-text: #0f172a;
-      --color-text-muted: #475569;
-      --color-primary: #4f46e5;
-      --color-primary-hover: #4338ca;
-      --color-primary-light: #eef2ff;
-      --color-accent: #0d9488;
-      --color-border: #e2e8f0;
-      --color-footer-bg: #1e293b;
-      --color-footer-text: #94a3b8;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
-      --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.12);
-      --radius: 12px;
-      --radius-md: 8px;
-      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC",
-        "PingFang SC", "Microsoft YaHei", sans-serif;
-      --transition: 0.3s ease;
+      --bg: #f8fafc;
+      --bg-card: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-light: #eef2ff;
+      --accent: #a855f7;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.1);
+      --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
 
-    body {
-      font-family: var(--font);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    /* 导航 */
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    /* 导航 */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-wrap { max-width: 1180px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    nav ul { display: flex; gap: 2rem; align-items: center; }
+    nav a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
+    nav a:hover { color: var(--primary); }
+    .nav-cta { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff !important; padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px -4px rgba(99,102,241,0.4); }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(99,102,241,0.5); }
+    .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
-    /* ============ 顶部导航 ============ */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-    }
+    /* Hero */
+    .hero { padding: 160px 1.5rem 100px; max-width: 1180px; margin: 0 auto; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--primary-light); color: var(--primary); border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(99,102,241,0.2); }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+    .hero h1 .gradient { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 0.9rem 1.6rem; border-radius: 10px; font-weight: 600; font-size: 0.95rem; transition: var(--transition); cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; box-shadow: 0 4px 14px -4px rgba(99,102,241,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -6px rgba(99,102,241,0.5); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: #f1f5f9; border-color: var(--text-muted); }
 
-    .nav-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    /* 区块 */
+    .section { padding: 100px 1.5rem; }
+    .section-title { text-align: center; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .section-subtitle { text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 1180px; margin: 0 auto; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; transition: var(--transition); }
+    .feature-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-lg); }
+    .feature-icon { width: 48px; height: 48px; background: var(--primary-light); color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; }
+    .feature-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--color-text);
-      letter-spacing: -0.02em;
-    }
+    /* 产品 */
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1180px; margin: 0 auto; }
+    .product-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+    .product-thumb { height: 200px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 2.5rem; border-bottom: 1px solid var(--border); }
+    .product-info { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+    .product-cat { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); }
+    .product-card h3 { font-size: 1.15rem; font-weight: 700; margin: 0; }
+    .product-card p { color: var(--text-muted); font-size: 0.9rem; flex: 1; }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; border-top: 1px solid var(--border); background: #fafafa; }
+    .price { font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .price span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); margin-left: 0.25rem; }
+    .buy-btn { background: var(--text); color: #fff; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; transition: var(--transition); }
+    .buy-btn:hover { background: var(--primary); }
 
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, var(--color-primary), #7c3aed);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-    }
+    /* CTA */
+    .cta { background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: var(--radius); padding: 3rem 1.5rem; text-align: center; color: #fff; margin: 0 auto 100px; max-width: 800px; }
+    .cta h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 0.75rem; }
+    .cta p { opacity: 0.9; font-size: 1.05rem; margin-bottom: 1.75rem; }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    /* 页脚 */
+    footer { border-top: 1px solid var(--border); background: var(--bg-card); padding: 80px 1.5rem 40px; }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6; }
+    .footer-col h4 { font-size: 1rem; margin-bottom: 1rem; color: var(--text); }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
+    .footer-col ul li a:hover { color: var(--primary); }
+    .footer-bottom { max-width: 1180px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; text-align: center; }
 
-    nav a {
-      padding: 8px 14px;
-      border-radius: var(--radius-md);
-      font-size: 0.925rem;
-      font-weight: 500;
-      color: var(--color-text-muted);
-      transition: background var(--transition), color var(--transition);
-    }
-
-    nav a:hover,
-    nav a.active {
-      background: var(--color-primary-light);
-      color: var(--color-primary);
-    }
-
-    .nav-cta {
-      background: var(--color-primary);
-      color: #fff !important;
-      padding: 8px 16px;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
-    }
-
-    .nav-cta:hover {
-      background: var(--color-primary-hover);
-      box-shadow: 0 2px 12px rgba(79, 70, 229, 0.35);
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2.5px;
-      background: var(--color-text);
-      border-radius: 2px;
-      transition: transform var(--transition), opacity var(--transition);
-    }
-
-    /* ============ 页脚 ============ */
-    footer {
-      background: var(--color-footer-bg);
-      color: var(--color-footer-text);
-      padding: 48px 24px 24px;
-    }
-
-    .footer-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 28px;
-      margin-bottom: 24px;
-    }
-
-    .footer-brand .logo {
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .footer-col h4 {
-      color: #fff;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 6px;
-    }
-
-    .footer-col a {
-      color: var(--color-footer-text);
-      font-size: 0.92rem;
-      transition: color var(--transition);
-    }
-
-    .footer-col a:hover {
-      color: #fff;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding-top: 16px;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-
-    /* ============ 响应式 ============ */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 260px;
-        max-width: 80vw;
-        height: 100vh;
-        background: var(--color-surface);
-        border-left: 1px solid var(--color-border);
-        flex-direction: column;
-        padding: 100px 24px 24px;
-        transition: right var(--transition);
-        box-shadow: var(--shadow-lg);
-      }
-
-      nav.open {
-        right: 0;
-      }
-
-      nav a {
-        display: block;
-        padding: 12px 10px;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero p.lead {
-        font-size: 1rem;
-      }
-
-      .section {
-        padding: 44px 16px;
-      }
-
-      .contact-section {
-        padding: 32px 20px;
-      }
-
-      .contact-section h2 {
-        font-size: 1.3rem;
-      }
-
-      .legal-section .section-title {
-        font-size: 1.25rem;
-      }
+      .hero { padding-top: 120px; }
+      .section { padding: 70px 1.5rem; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.7rem;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+      .footer-grid { grid-template-columns: 1fr; }
     }
-  </style>
-
   </style>
 </head>
 <body>
 
-    <!-- ============ 首页 Hero ============ -->
-    <section class="hero" id="home">
-      <div class="hero-inner">
-        <span class="badge">🚀 Digital Products &amp; Productivity Templates</span>
-        <h1>让你的工作更高效，<span class="accent">ZeoSpace</span> 让数字产品更轻松。</h1>
-        <p class="lead">
-          我们专注为创作者、远程办公者和学生提供高质量的生产力模板与数字资产，
-          助你一次性提升效率、减少重复劳动。
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">📩 联系客服</a>
-          <a href="#products" class="btn btn-outline">查看产品</a>
-        </div>
+  <header>
+    <div class="nav-wrap">
+      <div class="logo">
+        <div class="logo-icon">Z</div>
+        <div>ZeoSpace</div>
       </div>
-    </section>
-
-    <!-- ============ 产品介绍 ============ -->
-    <section class="section" id="products" style="background: var(--color-bg);">
-      <div class="section-title">我们的产品</div>
-      <p class="section-subtitle">
-        精选实用的数字产品与生产力模板，帮助你在工作和学习中事半功倍。
-      </p>
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="icon">📋</div>
-          <h3>生产力模板</h3>
-          <p>任务管理、日程规划、目标追踪等可编辑模板，方便复制到 Notion、Excel、Confluence 等工具。</p>
-        </div>
-        <div class="product-card">
-          <div class="icon">📊</div>
-          <h3>报表模板</h3>
-          <p>数据分析、周报月报、绩效追踪模板，帮你快速生成专业报表，减少重复写作。</p>
-        </div>
-        <div class="product-card">
-          <div class="icon">🧠</div>
-          <h3>学习资源</h3>
-          <p>学习计划、笔记框架、背单词表等辅助学习的数字资产，支持多平台同步。</p>
-        </div>
-        <div class="product-card">
-          <div class="icon">🎨</div>
-          <h3>设计资源</h3>
-          <p>Logo 草稿、品牌手册、PPT 封面模板，直接交付给团队或客户使用。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 客服入口 ============ -->
-    <section class="contact-section" id="contact">
-      <div class="wrap">
-        <div class="icon">📬</div>
-        <h2>客服联系</h2>
-        <p>
-          有任何问题或需要帮助，请随时通过下方邮箱联系我们。
-          我们会在工作日 24 小时内回复。
-        </p>
-        <a href="mailto:support@zeospace.com" class="contact-email-btn">
-          <span class="mail-icon">📧</span>
-          support@zeospace.com
-        </a>
-      </div>
-    </section>
-
-    <!-- ============ 隐私政策 ============ -->
-    <section class="legal-section" id="privacy">
-      <div class="legal-wrap">
-        <h2 style="border-bottom-color: var(--color-primary);">隐私政策</h2>
-        <p class="section-subtitle">Effective date: 2026-01-01</p>
-
-        <h2>1. 信息收集</h2>
-        <p>
-          为了提供更好的产品与服务，ZeoSpace 可能在以下情况下收集您的个人信息：
-        </p>
+      <nav>
         <ul>
-          <li>您主动向客服邮箱 <a href="mailto:support@zeospace.com">support@zeospace.com</a> 提交的联系信息（如姓名、邮箱、联系方式）；</li>
-          <li>您在网站访问过程中浏览器自动收集的常规数据（如 IP 地址、设备信息、访问页面）；</li>
-          <li>您购买或下载数字产品时相关的交易信息。</li>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#products">产品</a></li>
+          <li><a href="#features">特色</a></li>
+          <li><a href="#contact">联系</a></li>
         </ul>
+      </nav>
+      <a href="#contact" class="nav-cta">客服支持</a>
+      <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
 
-        <h2>2. 信息的使用方式</h2>
-        <p>
-          我们收集的信息仅用于以下目的：
-        </p>
-        <ul>
-          <li>提供、运营和改进 ZeoSpace 的数字产品与服务；</li>
-          <li>处理您可能产生的订单或购买请求；</li>
-          <li>为您发送订单状态、产品更新或客服回复；</li>
-          <li>根据法律要求或保护您、我们和第三方的安全。</li>
-        </ul>
-        <p>
-          我们不会出售或出借您的个人信息给第三方，除非符合适用法律的要求或获得您的同意。
-        </p>
+  <section class="hero" id="home">
+    <div class="hero-badge">🚀 数字产品与生产力模板</div>
+    <h1>让你的工作更高效，<br><span class="gradient">ZeoSpace 让数字产品更轻松。</span></h1>
+    <p>我们专注为创作者、远程办公者和学生提供高质量的生产力模板与数字资产，助你一次性提升效率、减少重复劳动。</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn btn-primary">查看产品</a>
+      <a href="#contact" class="btn btn-outline">联系客服</a>
+    </div>
+  </section>
 
-        <h2>3. 联系我们</h2>
-        <p>
-          如您对个人信息有任何疑问、诉求或需行使访问、更正、删除权，请通过
-          <a href="mailto:support@zeospace.com">support@zeospace.com</a> 与我们联系。
-        </p>
-
-        <h2>4. 儿童隐私</h2>
-        <p>
-          本网站的服务主要面向成年用户。我们不会故意收集 18 岁以下未成年人的个人信息。
-        </p>
-
-        <h2>5. 隐私政策更新</h2>
-        <p>
-          我们可能会不时更新本隐私政策。重要变更我们会在网站上发布，并适时通知。
-        </p>
+  <section class="section" id="features">
+    <div class="section-title">为什么选择 ZeoSpace？</div>
+    <div class="section-subtitle">精心设计的数字资产，助你在工作和学习中事半功倍。</div>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>生产力模板</h3>
+        <p>任务管理、日程规划、目标追踪等可编辑模板，方便复制到 Notion、Excel、Confluence 等工具。</p>
       </div>
-    </section>
-
-    <!-- ============ 服务条款 ============ -->
-    <section class="legal-section" id="terms">
-      <div class="legal-wrap">
-        <h2 style="border-bottom-color: var(--color-primary);">服务条款</h2>
-        <p class="section-subtitle">Effective date: 2026-01-01</p>
-
-        <h2>1. 数字产品授权规则</h2>
-        <ul>
-          <li>每一份数字产品均按照销售页面说明授予单用户授权；</li>
-          <li>您可以购买后自行使用，但不可修改、反向工程、重新打包或二次出售；</li>
-          <li>商业使用需符合产品页面明确说明；如需团队或机构授权，请联系客服；</li>
-          <li>下载、激活后或传输至该设备的所有权利归属您；但知识产权仍归原作者所有。</li>
-        </ul>
-
-        <h2>2. 不可退款说明</h2>
-        <p>
-          鉴于数字产品具备即时获取、使用限制和个性化定制的特性，
-          除非法律强制规定，所有数字产品一经购买完成且确认交付，<strong>原则上不支持退款</strong>。
-        </p>
-        <ul>
-          <li>如您在下载前发现商品信息错误或不符，请在 24 小时内联系客服处理；</li>
-          <li>下载、解压、使用或传输都将被视为确认接受条款且放弃退款请求；</li>
-          <li>特殊情况（如平台故障、严重不符描述）我们会酌情处理。</li>
-        </ul>
-
-        <h2>3. 免责声明</h2>
-        <p>
-          本站提供的数字产品“按现状”提供，不提供任何明示或默示的担保：
-        </p>
-        <ul>
-          <li>不保证产品完全无误、适用于您的所有场景；</li>
-          <li>不对因使用产品导致的利润损失、数据丢失、停机或商业损失承担责任；</li>
-          <li>因第三方链接、外部工具或设备环境导致的问题，ZeoSpace 不承担责任。</li>
-        </ul>
-
-        <h2>4. 联系我们</h2>
-        <p>
-          如对本条款有疑问，请发送邮件至
-          <a href="mailto:support@zeospace.com">support@zeospace.com</a>。
-        </p>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>报表模板</h3>
+        <p>数据分析、周报月报、绩效追踪模板，帮你快速生成专业报表，减少重复写作。</p>
       </div>
-    </section>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>学习资源</h3>
+        <p>学习计划、笔记框架、背单词表等辅助学习的数字资产，支持多平台同步。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>设计资源</h3>
+        <p>Logo 草稿、品牌手册、PPT 封面模板，直接交付给团队或客户使用。</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- ============ 页脚 ============ -->
-    <footer>
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#home" class="logo">
-            <span class="logo-icon">Z</span>
-            ZeoSpace
-          </a>
-          <p>销售数字产品 / 生产力模板与资产。用好用的工具，让每个人的效率更高。</p>
+  <section class="section" id="products">
+    <div class="section-title">精选产品</div>
+    <div class="section-subtitle">每一份数字产品均经过精心设计，支持即时下载与使用。</div>
+    <div class="products">
+      <div class="product-card">
+        <div class="product-thumb">📋</div>
+        <div class="product-info">
+          <div class="product-cat">Notion 模板</div>
+          <h3>个人生产力系统</h3>
+          <p>集成任务管理、习惯追踪、知识库于一体的 Notion 工作空间模板。</p>
         </div>
-
-        <div class="footer-col">
-          <h4>导航</h4>
-          <ul>
-            <li><a href="#home">首页</a></li>
-            <li><a href="#products">产品</a></li>
-            <li><a href="#contact">客服</a></li>
-            <li><a href="#privacy">隐私政策</a></li>
-            <li><a href="#terms">服务条款</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>联系我们</h4>
-          <ul>
-            <li>📧 <a href="mailto:support@zeospace.com">support@zeospace.com</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>法律</h4>
-          <ul>
-            <li><a href="#privacy">隐私政策</a></li>
-            <li><a href="#terms">服务条款</a></li>
-          </ul>
+        <div class="product-footer">
+          <div class="price">¥29<span>一次性购买</span></div>
+          <button class="buy-btn">立即购买</button>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        &copy; <span id="year"></span> ZeoSpace. 保留所有权利。
+      <div class="product-card">
+        <div class="product-thumb">📊</div>
+        <div class="product-info">
+          <div class="product-cat">Excel 模板</div>
+          <h3>年度财务报表包</h3>
+          <p>包含月度预算、支出追踪、利润分析等多张可自定义的 Excel 报表。</p>
+        </div>
+        <div class="product-footer">
+          <div class="price">¥49<span>一次性购买</span></div>
+          <button class="buy-btn">立即购买</button>
+        </div>
       </div>
-    </footer>
-  </body>
+      <div class="product-card">
+        <div class="product-thumb">🧠</div>
+        <div class="product-info">
+          <div class="product-cat">学习资源</div>
+          <h3>学生学习计划表</h3>
+          <p>科学的学习时间表与复习规划表，适合考研、考证与日常课程管理。</p>
+        </div>
+        <div class="product-footer">
+          <div class="price">¥19<span>一次性购买</span></div>
+          <button class="buy-btn">立即购买</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-thumb">🎨</div>
+        <div class="product-info">
+          <div class="product-cat">设计资产</div>
+          <h3>品牌视觉资源包</h3>
+          <p>Logo 草稿、品牌色卡、PPT 封面模板，直接交付给团队或客户。</p>
+        </div>
+        <div class="product-footer">
+          <div class="price">¥99<span>商业授权</span></div>
+          <button class="buy-btn">立即购买</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>准备好提升效率了吗？</h2>
+    <p>浏览我们的全部产品，或直接联系客服获取定制建议。</p>
+    <a href="#contact" class="btn btn-primary" style="background:#fff; color:var(--primary); box-shadow:none;">联系客服</a>
+  </section>
+
+  <footer id="contact">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="font-size:1.15rem;">
+          <div class="logo-icon">Z</div>
+          <div>ZeoSpace</div>
+        </div>
+        <p>销售数字产品 / 生产力模板与资产。用好用的工具，让每个人的效率更高。</p>
+      </div>
+      <div class="footer-col">
+        <h4>导航</h4>
+        <ul>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#products">产品</a></li>
+          <li><a href="#features">特色</a></li>
+          <li><a href="#contact">客服</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>联系我们</h4>
+        <ul>
+          <li>📧 <a href="mailto:support@zeospace.com">support@zeospace.com</a></li>
+          <li>⏰ 工作日 24 小时内回复</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>法律</h4>
+        <ul>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> ZeoSpace. 保留所有权利。
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav ul');
+    btn.addEventListener('click', () => {
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '100%';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = 'rgba(255,255,255,0.95)';
+      nav.style.padding = '1rem';
+      nav.style.borderTop = '1px solid var(--border)';
+      nav.style.gap = '1rem';
+    });
+  </script>
+</body>
 </html>
+
 
 
 
