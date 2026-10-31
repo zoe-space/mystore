@@ -24,7 +24,7 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
     ul { list-style: none; }
@@ -39,6 +39,142 @@
     .nav-cta { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff !important; padding: 0.6rem 1.2rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 12px -4px rgba(99,102,241,0.4); }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(99,102,241,0.5); }
     .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+    /* 法律页面专用：更窄、更居中、更易读 */
+    .legal-page {
+      padding: 150px 1.5rem 120px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .legal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(99,102,241,0.2);
+    }
+
+    .legal-page h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .legal-page h1::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      margin: 16px auto 0;
+      border-radius: 2px;
+    }
+
+    .legal-page .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 100%;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .legal-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .legal-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-top-left-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+    }
+
+    .legal-wrap h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: var(--text);
+      padding-left: 12px;
+      border-left: 4px solid var(--primary-light);
+    }
+
+    .legal-wrap h2:first-child {
+      margin-top: 0;
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .legal-wrap p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .legal-wrap ul {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      padding-left: 22px;
+    }
+
+    .legal-wrap li {
+      margin-bottom: 10px;
+      list-style-type: disc;
+    }
+
+    .legal-wrap strong {
+      color: var(--text);
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 40px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      text-align: center;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .back-home:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+      transform: translateX(-4px);
+    }
+
+    @media (max-width: 768px) {
+      .legal-page { padding-top: 120px; padding-left: 1rem; padding-right: 1rem; }
+      .legal-wrap { padding: 32px 24px; }
+    }
   </style>
 </head>
 <body>
