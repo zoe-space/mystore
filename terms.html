@@ -40,6 +40,16 @@
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -4px rgba(99,102,241,0.5); }
     .mobile-menu-btn { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
+    /* 页脚 */
+    footer { border-top: 1px solid var(--border); background: var(--bg-card); padding: 60px 1.5rem 40px; }
+    .footer-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6; }
+    .footer-col h4 { font-size: 1rem; margin-bottom: 1rem; color: var(--text); }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a { color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
+    .footer-col ul li a:hover { color: var(--primary); }
+    .footer-bottom { max-width: 1180px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; text-align: center; }
+
     /* 法律页面专用：更窄、更居中、更易读 */
     .legal-page {
       padding: 150px 1.5rem 120px;
